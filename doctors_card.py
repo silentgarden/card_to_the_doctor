@@ -38,8 +38,7 @@ input_arrival.grid(row=5, column=2, sticky=W, padx=10, pady=10)
 input_arrival.insert(END, "YYYY-MM-DD")
 
 var1 = IntVar()
-checkbox_notimespecified = ttk.Checkbutton(root, text="Time Not Specified", variable=var1, style='custom.Checkbutton')
+checkbox_notimespecified = ttk.Checkbutton(root, text="Time Not Specified", variable=var1)
 checkbox_notimespecified.grid(row=6, column=2, sticky=W, padx=10, pady=10)
-style.configure('custom.TCheckbutton', font=('Arial', 12))
 
 root.mainloop()
