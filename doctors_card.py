@@ -30,7 +30,16 @@ input_birthday.grid(row=3, column=2, sticky=W, padx=10, pady=10)
 options = ttk.StringVar()
 options.set("Select Package")
 
-input_package = ttk.OptionMenu(root, options, "Ayurveda Regeneration Package", "Ayurveda Panchakarma Package", "Ayurveda Slimming Package") # font="Arial 12", bootstyle=DARK, width=30)
+input_package = ttk.OptionMenu(root, options, "Ayurveda Regeneration Package", "Ayurveda Panchakarma Package", "Ayurveda Slimming Package")
 input_package.grid(row=4, column=2, sticky=W, pady=8, padx=8)
+
+input_arrival = ttk.Entry(root, font="Arial 12", bootstyle=DARK, width=11)
+input_arrival.grid(row=5, column=2, sticky=W, padx=10, pady=10)
+input_arrival.insert(END, "YYYY-MM-DD")
+
+var1 = IntVar()
+checkbox_notimespecified = ttk.Checkbutton(root, text="Time Not Specified", variable=var1, style='custom.Checkbutton')
+checkbox_notimespecified.grid(row=6, column=2, sticky=W, padx=10, pady=10)
+style.configure('custom.TCheckbutton', font=('Arial', 12))
 
 root.mainloop()
