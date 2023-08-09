@@ -43,41 +43,50 @@ def main():
     input_Departure.grid(row=7, column=2, columnspan=3, sticky=W, padx=10, pady=10)
     input_Departure.insert(END, "YYYY-MM-DD")
 
+    def first_checkbutton_checked():
+        global first_checkbutton_checked_now
+        first_checkbutton_checked_now = var1.get()
+        if first_checkbutton_checked_now:
+            input_time1.config(state="normal", bootstyle=DARK)
+        else:
+            input_time1.config(state="disabled", bootstyle=LIGHT)
+
     var1 = IntVar()
-    first_checked = None
-    checkbox_notimespecified1 = ttk.Checkbutton(root, text="Time Not Specified", variable=var1, onvalue=0, offvalue=1, command=first_checked)
+    checkbox_notimespecified1 = ttk.Checkbutton(root, text="Time Not Specified", variable=var1, onvalue=0, offvalue=1, command=first_checkbutton_checked)
     checkbox_notimespecified1.grid(row=6, column=2, columnspan=3, sticky=W, padx=10, pady=10)
     
     input_time1 = ttk.Entry(root, font="Arial 12", bootstyle=LIGHT, width=7, state="disabled")
     input_time1.grid(row=6, column=4, sticky=W, padx=10, pady=10)
-    
+
+    def second_checkbutton_checked():
+        global second_checkbutton_checked_now
+        second_checkbutton_checked_now = var2.get()
+        if second_checkbutton_checked_now:
+            input_time2.config(state="normal", bootstyle=DARK)
+        else:
+            input_time2.config(state="disabled", bootstyle=LIGHT)
+
     var2 = IntVar()
-    second_checked = None
-    checkbox_notimespecified2 = ttk.Checkbutton(root, text="Time Not Specified", variable=var2, onvalue=0, offvalue=1, command=second_checked)
+    checkbox_notimespecified2 = ttk.Checkbutton(root, text="Time Not Specified", variable=var2, onvalue=0, offvalue=1, command=second_checkbutton_checked)
     checkbox_notimespecified2.grid(row=8, column=2, columnspan=3, sticky=W, padx=10, pady=10)
     
     input_time2 = ttk.Entry(root, font="Arial 12", bootstyle=LIGHT, width=7, state="disabled")
     input_time2.grid(row=8, column=4, sticky=W, padx=10, pady=10)
     
-    button_quit = ttk.Button(root, text='Quit', style='info.outline.TButton')
+
+    button_quit = ttk.Button(root, text='Quit', style='info.outline.TButton', command=quit_command)
     button_quit.grid(row=9, column=3, sticky=W, padx=10, pady=10)
     
     button_create = ttk.Button(root, text='Create', style='success.TButton')
     button_create.grid(row=9, column=4, sticky=W, padx=10, pady=10)
-    
-    root.mainloop()
 
-    def first_checked():
-        if var1.get() == 0:
-            input_time1.config(state="normal", bootstyle=DARK)
-        else:
-            input_time1.config(state="normal", bootstyle=LIGHT)
-    
     def second_checked():
         input_time1.configure(state=NORMAL, bootstyle=DARK)
 
+    root.mainloop()
+
+def quit_command(button_quit):
+    print("It just worked again")
+
+
 main()
-
-
-
-# I need to change the state of input_time1 and input_2 with their checkbuttons, chekcbox_notimespecified1 and checkbox_notimespecified2 respectively. What is wrong with the code?
