@@ -2,11 +2,11 @@ from tkinter import *
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 
-def main():
-    root = Tk()
-    root.title("Doctor's Card")
-    root.geometry("600x500+300+100")
+root = Tk()
+root.title("Doctor's Card")
+root.geometry("600x500+300+100")
     
+def main():
     label_main = ttk.Label(root, text="Doctor's Card", bootstyle=SUCCESS, font="Helvetica 20 bold").grid(row=0, column=0, sticky=W, padx=10)
     label1 = ttk.Label(root, text="Name", font="Helvetica 15", bootstyle=DARK).grid(row=1, column=0, sticky=W, pady=10, padx=10) 
     label2 = ttk.Label(root, text="Age", font="Helvetica 15", bootstyle=DARK).grid(row=2, column=0, sticky=W, pady=10, padx=10) 
@@ -85,8 +85,7 @@ def main():
 
     root.mainloop()
 
-def quit_command(button_quit):
-    print("It just worked again")
-
+def quit_command():
+    root.quit()
 
 main()
