@@ -123,11 +123,21 @@ def creating_card():
     font_size_for_package = 30
 
     name_String = input_name.get()
-    age_String = input_age.get()
-    birthday_String = input_birthday.get()
+    age_String = ""
+    if input_age.get() == None :
+       age_String = "" 
+    else:
+        age_String = f"Age : {input_age.get()} years"
+
+    birthday_String = ""
+    if input_birthday.get() == None :
+        birthday_String = ""
+    else:
+        birthday_String = f"Birthday : {input_birthday.get()}"
+
     package_String = input_package.get()
-    arrival_String = input_arrival.get()
-    departure_String = input_Departure.get()
+    arrival_String = f"Arrival : {input_arrival.get()}"
+    departure_String = f"Departure : {input_Departure.get()}"
 
     name_Width = pdfmetrics.stringWidth(name_String, font_trebuchet, font_size_for_name)
     xcenter_name = (drawing.width / 2) - (name_Width / 2)
