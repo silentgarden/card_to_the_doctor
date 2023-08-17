@@ -1,3 +1,4 @@
+import subprocess
 from tkinter import *
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
@@ -33,7 +34,7 @@ def main():
     label25 = ttk.Label(root, text=":", font="Helvetica 15", bootstyle=DARK).grid(row=7, column=1, sticky=W, pady=10, padx=10)
     
     global input_name
-    input_name = ttk.Entry(root, font="Arial 12", bootstyle=DARK, width=30) #, columnspan=5)
+    input_name = ttk.Entry(root, font="Arial 12", bootstyle=DARK, width=30)
     input_name.grid(row=1, column=2, columnspan=3, sticky=W, pady=10, padx=10)
     global input_age
     input_age = ttk.Entry(root, font="Arial 12", bootstyle=DARK, width=6)
@@ -67,10 +68,12 @@ def main():
         else:
             input_time1.config(state="disabled", bootstyle=LIGHT)
 
+    global var1
     var1 = IntVar()
     checkbox_notimespecified1 = ttk.Checkbutton(root, text="Time Not Specified", variable=var1, onvalue=0, offvalue=1, command=first_checkbutton_checked)
     checkbox_notimespecified1.grid(row=6, column=2, columnspan=3, sticky=W, padx=10, pady=10)
     
+    global input_time1
     input_time1 = ttk.Entry(root, font="Arial 12", bootstyle=LIGHT, width=7, state="disabled")
     input_time1.grid(row=6, column=4, sticky=W, padx=10, pady=10)
 
@@ -82,10 +85,12 @@ def main():
         else:
             input_time2.config(state="disabled", bootstyle=LIGHT)
 
+    global var2
     var2 = IntVar()
     checkbox_notimespecified2 = ttk.Checkbutton(root, text="Time Not Specified", variable=var2, onvalue=0, offvalue=1, command=second_checkbutton_checked)
     checkbox_notimespecified2.grid(row=8, column=2, columnspan=3, sticky=W, padx=10, pady=10)
     
+    global input_time2
     input_time2 = ttk.Entry(root, font="Arial 12", bootstyle=LIGHT, width=7, state="disabled")
     input_time2.grid(row=8, column=4, sticky=W, padx=10, pady=10)
     
@@ -95,15 +100,6 @@ def main():
     
     button_create = ttk.Button(root, text='Create', style='success.TButton', command=creating_card)
     button_create.grid(row=9, column=4, sticky=W, padx=10, pady=10)
-
-    global input_name_value
-    input_name_value = input_name.get()
-    print(input_name_value)
-    #input_age_value = input_age.get()
-    #input_birthday_value = input_birthday.get()
-    #input_package_value = input_package.get()
-    #input_arrival_value = input_arrival.get()
-    #input_Departure_value = input_Departure.get()
 
     root.mainloop()
 
@@ -136,8 +132,22 @@ def creating_card():
         birthday_String = f"Birthday : {input_birthday.get()}"
 
     package_String = input_package.get()
-    arrival_String = f"Arrival : {input_arrival.get()}"
-    departure_String = f"Departure : {input_Departure.get()}"
+    
+    arrival_time_string = ""
+    if var1.get() == 0 :
+        arrival_time_string = "Time Not Specified"
+    else:
+        arrival_time_string = input_time1.get()
+
+    departure_time_string = ""
+    if var2.get == 0 :
+        departure_time_string = "Time Not Specified"
+    else:
+        departure_time_string = input_time2.get()
+
+
+    arrival_String = f"Arrival : {input_arrival.get()} [ {arrival_time_string} ]"
+    departure_String = f"Departure : {input_Departure.get()} [ {departure_time_string} ]"
 
     name_Width = pdfmetrics.stringWidth(name_String, font_trebuchet, font_size_for_name)
     xcenter_name = (drawing.width / 2) - (name_Width / 2)
@@ -162,7 +172,9 @@ def creating_card():
     drawing.add(package)
     drawing.add(arrival)
     drawing.add(departure)
-    drawing.save(formats=['pdf', 'png'], outDir=".", fnRoot="card")
+    drawing.save(formats=['png'], outDir="../", fnRoot="card")
+    subprocess.Popen(r'explorer /select, "C:\Users\Admin\silentgardenapps\Doctors_card_app\card.png"')
+    root.quit()
 
 if __name__ == "__main__":
     main()
