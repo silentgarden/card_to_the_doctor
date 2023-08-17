@@ -120,13 +120,13 @@ def creating_card():
 
     name_String = input_name.get()
     age_String = ""
-    if input_age.get() == None :
+    if input_age.get() == None or len(input_age.get().strip()) == 0 :
        age_String = "" 
     else:
         age_String = f"Age : {input_age.get()} years"
 
     birthday_String = ""
-    if input_birthday.get() == None :
+    if input_birthday.get() == None or len(input_birthday.get().strip()) == 0 :
         birthday_String = ""
     else:
         birthday_String = f"Birthday : {input_birthday.get()}"
@@ -140,7 +140,7 @@ def creating_card():
         arrival_time_string = input_time1.get()
 
     departure_time_string = ""
-    if var2.get == 0 :
+    if var2.get() == 0 :
         departure_time_string = "Time Not Specified"
     else:
         departure_time_string = input_time2.get()
