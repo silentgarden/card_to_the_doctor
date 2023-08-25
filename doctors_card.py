@@ -1,3 +1,4 @@
+import os
 import subprocess
 from tkinter import *
 import ttkbootstrap as ttk
@@ -16,7 +17,15 @@ pdfmetrics.registerFont(TTFont('Caladea', 'C:\\Users\\Admin\\silentgardenapps\\A
 pdfmetrics.registerFont(TTFont('ErasMediumITC', 'C:\\Users\\Admin\\silentgardenapps\\App Fonts\\ErasMediumITC.ttf'))
 pdfmetrics.registerFont(TTFont('FRADM', 'C:\\Users\\Admin\\silentgardenapps\\App Fonts\\FRADM.ttf'))
 
-    
+directory_name = r"Silent_Garden_Detalis\Doctor Card"
+home_directory = os.path.expanduser("~")
+directory_path = os.path.join(home_directory, directory_name)
+
+if not os.path.exists(directory_path):
+    os.makedirs(directory_path)
+
+selection_path = os.path.join(directory_path, "card.png")
+
 def main():
     label_main = ttk.Label(root, text="Doctor's Card", bootstyle=SUCCESS, font="Helvetica 20 bold").grid(row=0, column=0, sticky=W, padx=10)
     label1 = ttk.Label(root, text="Name", font="Helvetica 15", bootstyle=DARK).grid(row=1, column=0, sticky=W, pady=10, padx=10) 
@@ -172,8 +181,8 @@ def creating_card():
     drawing.add(package)
     drawing.add(arrival)
     drawing.add(departure)
-    drawing.save(formats=['png'], outDir="../", fnRoot="card")
-    subprocess.Popen(r'explorer /select, "C:\Users\Admin\silentgardenapps\Doctors_card_app\card.png"')
+    drawing.save(formats=['png'], outDir=directory_path, fnRoot="card")
+    subprocess.Popen('explorer /select, "{}"'.format(selection_path))
     root.quit()
 
 if __name__ == "__main__":
