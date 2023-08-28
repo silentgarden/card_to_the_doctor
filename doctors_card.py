@@ -181,9 +181,12 @@ def creating_card():
     drawing.add(package)
     drawing.add(arrival)
     drawing.add(departure)
-    drawing.save(formats=['png'], outDir=directory_path, fnRoot="card")
-    subprocess.Popen('explorer /select, "{}"'.format(selection_path))
-    root.quit()
+    try:
+        drawing.save(formats=['png'], outDir=directory_path, fnRoot="card")
+        subprocess.Popen('explorer /select, "{}"'.format(selection_path))
+        root.quit()
+    except:
+        print("doesn't work")
 
 if __name__ == "__main__":
     main()
