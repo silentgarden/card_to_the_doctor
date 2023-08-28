@@ -12,10 +12,10 @@ root = Tk()
 root.title("Doctor's Card")
 root.geometry("600x500+300+100")
 
-pdfmetrics.registerFont(TTFont('Trebuchet MS', 'C:\\Users\\Admin\\silentgardenapps\\App Fonts\\trebuc.ttf'))
-pdfmetrics.registerFont(TTFont('Caladea', 'C:\\Users\\Admin\\silentgardenapps\\App Fonts\\Caladea-Bold.ttf'))
-pdfmetrics.registerFont(TTFont('ErasMediumITC', 'C:\\Users\\Admin\\silentgardenapps\\App Fonts\\ErasMediumITC.ttf'))
-pdfmetrics.registerFont(TTFont('FRADM', 'C:\\Users\\Admin\\silentgardenapps\\App Fonts\\FRADM.ttf'))
+pdfmetrics.registerFont(TTFont('Trebuchet MS', '..\\fonts\\trebuc.ttf'))
+pdfmetrics.registerFont(TTFont('Caladea', '..\\fonts\\Caladea-Bold.ttf'))
+pdfmetrics.registerFont(TTFont('ErasMediumITC', '..\\fonts\\ErasMediumITC.ttf'))
+pdfmetrics.registerFont(TTFont('FRADM', '..\\fonts\\FRADM.ttf'))
 
 directory_name = r"Silent_Garden_Detalis\Doctor Card"
 home_directory = os.path.expanduser("~")
