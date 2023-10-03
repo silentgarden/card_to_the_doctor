@@ -20,6 +20,7 @@ pdfmetrics.registerFont(TTFont('FRADM', '..\\fonts\\FRADM.ttf'))
 directory_name = r"Silent_Garden_Detalis\Doctor Card"
 home_directory = os.path.expanduser("~")
 directory_path = os.path.join(home_directory, directory_name)
+#user_path = os.path.join(os.environ['%USERPROFILE%'], directory_path)
 
 if not os.path.exists(directory_path):
     os.makedirs(directory_path)
@@ -181,12 +182,13 @@ def creating_card():
     drawing.add(package)
     drawing.add(arrival)
     drawing.add(departure)
+
     try:
         drawing.save(formats=['png'], outDir=directory_path, fnRoot="card")
-        subprocess.Popen('explorer /select, "{}"'.format(selection_path))
+        subprocess.Popen('explorer /select, ')
         root.quit()
-    except:
-        print("doesn't work")
+    except Exception as e:
+        print("Error:   ", str(e))
 
 if __name__ == "__main__":
     main()
