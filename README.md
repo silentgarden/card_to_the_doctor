@@ -11,4 +11,4 @@
 - This operation may quit the application and open the file explorer with the file 'card.png'.
 - The 'card.png' file then can be used for whatever purpose.
 
-![executable available here](https://github.com/silentgarden/card_to_the_doctor/tree/main/output)
+[executable available here](https://github.com/silentgarden/card_to_the_doctor/tree/main/output)
